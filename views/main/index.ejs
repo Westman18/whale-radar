@@ -1,0 +1,126 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+
+            <main style="text-align: center;">
+                <h2 style="margin-top: 20px; ">Welcome to the Whale Radar!</h2>
+
+                <form action="/" method="POST">
+
+                    <h3>Check where the specific whales were spotted <u>near Seattle</u>.</h3>
+
+                    <h4>To start, pick the specie and time-frame:</h4>
+                    <!-- <div>
+                        <h4 style="font-family: monospace; font-size: 15px; color: rgb(59, 27, 0); background-color: rgba(255, 235, 205, 0.486); width:fit-content; display: inline-block; margin: 0; margin-bottom: 5px;">
+                             HINT: specify dates for Orcas - they are very common :)
+                            </h4>
+                    </div> -->
+
+                    <label for="whaleType">Species:</label>
+                    <select name="whale" id="whaleType">
+                        <option value="">All</option>
+                        <option value="orca">Orca</option>
+                        <option value="gray whale">Gray Whale</option>
+                        <option value="humpback">Humpback</option>
+                        <option value="atlantic white-sided dolphin">Atlantic Dolphin</option>
+                        <option value="pacific white-sided dolphin">Pacific Dolphin</option>
+                    </select>
+
+                    <label for="since">Since:</label>
+                    <input type="month" name="since" id="since">
+
+                    <label for="until">Until:</label>
+                    <input type="month" name="until" id="until">
+
+                    <button class="btn" type="submit">Search!</button>
+
+                </form>
+
+                <% if  (whale){ 
+                    
+                    let imageLink = ''
+                    let wikiLink = ''
+                    
+                    switch (whale) {
+                        case 'orca':
+                            imageLink = 'https://d.newsweek.com/en/full/1654045/orcas.jpg?w=1600&h=900&q=88&f=6332a67ef1531a8096754b7e4da39a85'
+                            wikiLink = 'https://en.wikipedia.org/wiki/Killer_whale'
+                            break;
+                    
+                        case 'gray whale':
+                            imageLink = 'https://whalewatchcabo.com/wp-content/uploads/Los-Cabos-Whale-Watching-Season.jpg'
+                            wikiLink = 'https://en.wikipedia.org/wiki/Gray_whale'
+                            break;
+
+                        case 'humpback':
+                            imageLink = 'https://d.newsweek.com/en/full/1583324/humpback-mother-calf.jpg?w=1600&h=900&q=88&f=d1b4a591cd699eec4916817697b2e750'
+                            wikiLink = 'https://en.wikipedia.org/wiki/Humpback_whale'
+                            break;
+
+                        case 'atlantic white-sided dolphin':
+                            imageLink = 'https://img.chainimage.com/images/hd-animal-wallpaper-with-a-picture-jumping-dolphin-hd-dolphin.jpg'
+                            wikiLink = 'https://en.wikipedia.org/wiki/Atlantic_white-sided_dolphin'
+                            break;
+
+                        case 'pacific white-sided dolphin':
+                            imageLink = 'https://cdn.abcotvs.com/dip/images/1173650_Katrl_1.jpg?w=1600'
+                            wikiLink = 'https://en.wikipedia.org/wiki/Pacific_white-sided_dolphin'
+                            break;
+
+                        default:
+                            imageLink = ''
+                            wikiLink = 'https://en.wikipedia.org/wiki/Whale'
+                            
+                            break;
+                    }
+                    
+                    %>
+                    <div style="display: flex; justify-content: center;">
+                        <div class="mapArea" style="margin-right: 40px; width: 150px; height: 87px;">
+                            <img style="width: 100%; overflow:hidden;" src="<%= imageLink%>">
+                        </div>
+                        
+                        <div style="justify-items: center; color:rgb(13, 44, 27);">
+                            <h4 style="text-align: left; margin-bottom: 18px; margin-top: 25px; font-size: 18px;">
+                               <u><%= quantity%></u> <%= whale %>s were spotted!
+                            </h4>
+                            <h4 style="text-align: left; margin: 0;"> 
+                                Read more about <%= whale %>s here: <a href="<%= wikiLink %>">Wiki</a> 
+                            </h4>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+
+                        <div class="mapArea" id="googleMap" style="width:100%;height:400px;"></div>
+
+                        <h5 style="color: azure; font-weight: normal;"> All data comes from the Washington <i>Whale
+                                Museum</i>
+                            open license API. </h5>
+
+
+            </main>
+            <script src="/js/main.js"></script>
+            <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-w6VULHChBCa9DhYdsGoJVo9QpZfVeP4&callback=myMap"></script>
+
+
+            <script>
+
+                const locations = <%- coordinates %>;
+                    console.log(locations[0])
+
+                for (let loc of locations)
+                    placeMarkerAndPanTo(loc, map)
+
+                setMapOnAll(map)
+            </script>
+
+
+
+    </body>
+
+    </html>

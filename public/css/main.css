@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #00043a;
+  /* text-shadow: 0px 3px 3px #00043a2c; */
+  background-image: url('https://assets.newatlas.com/dims4/default/5ab0e1a/2147483647/strip/true/crop/1999x1328+0+0/resize/1440x957!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2Ffe%2F06%2F75f2c8704c71ade9c8881c997c8f%2Fdepositphotos-41105113-l-2015.jpg');
+  background-size: 100% 100%;
+}
+
+main {
+  padding: 1rem;
+  margin: auto;
+}
+
+form {
+  display: inline;
+  margin-bottom: 20px;
+  justify-content: center;
+  text-align: center;
+}
+
+form label {
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+form h4 {
+  margin:0.8rem;
+}
+
+form h3 {
+  margin:1rem;
+}
+
+.main-header {
+  width: 100%;
+  height: 3.5rem;
+  background-color: #01665a86;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-header__nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.main-header__item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.main-header__item {
+  margin: 0 1rem;
+  padding: 0;
+}
+
+.main-header__item a {
+  text-decoration: none;
+  font-size: 17px;
+  color: white;
+}
+
+.main-header__item a:hover,
+.main-header__item a:active,
+.main-header__item a.active {
+  color: #ffeb3b;
+}
+
+
+.mapArea {
+  border: #00695d8a 3px solid;
+  box-shadow: 0 0 5px #00695dfd;
+  margin-top: 0.8rem;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  display: none;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  text-decoration: none;
+  font: inherit;
+  border: 1px solid #00695c;
+  color: #00695c;
+  background: white;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 7px;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: #00695c;
+  color: white;
+}
+
+select, input {
+  display: inline-block;
+  padding: 0.20rem 0.5rem;
+  max-width: 165px;
+  text-decoration: none;
+  font: inherit;
+  border: 1px solid #00695c;
+  color: #00695c;
+  background: white;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 3px 0;
+}
+
+::-webkit-datetime-edit { padding: 0px; }

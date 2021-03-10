@@ -1,7 +1,8 @@
 const axios = require('axios');
 
+let apiLink = '';
 
-module.exports = class Product {
+module.exports = class Whale {
 
     static getCoordintes(whale, since, until, cb) {
 
@@ -13,7 +14,9 @@ module.exports = class Product {
             until = until + '-01';
         }
         
-        const apiLink = 'http://hotline.whalemuseum.org/api.json?species=' + whale + '&since=' + since + '&until=' + until + '&limit=50';
+        apiLink = 'http://hotline.whalemuseum.org/api.json?species=' + whale + '&since=' + since + '&until=' + until + '&limit=50';
+        
+        
         axios.get(apiLink)
             .then(res => {
                 const reports = res.data;
@@ -21,14 +24,14 @@ module.exports = class Product {
                 for (let report of reports) {
                     coordinates.push({ lat: report.latitude, lng: report.longitude })
                 }
-                console.log(res.data)
+                // console.log(res.data)
                 return coordinates;
             })
             .then((coordinates)=>{
                 const qtyLink = 'http://hotline.whalemuseum.org/api/count.json?species=' + whale + '&since=' + since + '&until=' + until;
                 axios.get( qtyLink)
                 .then(res => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     const qty = res.data;
                     cb(coordinates, qty)
                 })
@@ -37,8 +40,10 @@ module.exports = class Product {
             .catch(err => {
                 console.log(err)
             })
+    }
 
-        // cb()
+    static getApiLink() {
+        return apiLink;
     }
 }
 

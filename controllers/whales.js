@@ -16,8 +16,9 @@ exports.getWhaleSpots = (req, res, next) => {
                 coordinates: JSON.stringify(c), 
                 quantity: q,
                 path: '/' 
-            })
+            })           
         })
+        
 
     
     

@@ -35,7 +35,7 @@ npm test  //to run basic JEST tests
 ```
 
 ## Contributing
-This app has clearly demonstrative purposes. However all changes suggestions are warmly welcomed.
+This app has clearly demonstrative purposes. However all suggestions of changes are warmly welcomed.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
